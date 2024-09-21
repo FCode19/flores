@@ -59,6 +59,15 @@
             transition: opacity 2s ease-in-out;
         }
 
+        audio {
+            display: none;
+        }
+
+        .play-button {
+            width: 30px;
+            cursor: pointer;
+        }
+
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
@@ -70,6 +79,17 @@
     </style>
 </head>
 <body>
+    <div class="bg-transition" style="background-image: url('img/girasol.webp');"></div>
+
+    <div>
+        <h2>Tengo un regalo para ti</h2>
+        <button onclick="window.location.href='rosas.html'">Abrir</button>
+        <audio id="audioPlayer">
+            <source src="aud/burro.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <br>
+    <img src="img/play.png" alt="Play" class="play-button" id="playButton">
     <script>
         let isShrek = false;
 
@@ -90,17 +110,17 @@
         }
 
         setInterval(toggleBackground, 5000);
-    </script>    
 
-    <div class="bg-transition" style="background-image: url('img/girasol.webp');"></div>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playButton = document.getElementById('playButton');
 
-    <audio autoplay loop>
-        <source src="aud/burro.mp3" type="audio/mpeg">
-    </audio>
-
-    <div>
-        <h2>Tengo un regalo para ti</h2>
-        <button onclick="window.location.href='rosas.html'">Abrir</button>
-    </div>
+        playButton.addEventListener('click', function () {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+            } else {
+                audioPlayer.pause();
+            }
+        });
+    </script>
 </body>
 </html>
