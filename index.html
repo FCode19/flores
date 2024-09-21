@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubi 💛</title>
+    <link rel="icon" href="img/girasole.png">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 4vw;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        button {
+            font-size: 2vw;
+            padding: 15px 30px;
+            margin-top: 30px;
+            border: none;
+            background-color: #ff3366;
+            color: white;
+            cursor: pointer;
+            border-radius: 50px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .bg-transition {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let isShrek = false;
+
+        function toggleBackground() {
+            const backgroundElement = document.querySelector('.bg-transition');
+            
+            if (isShrek) {
+                backgroundElement.style.backgroundImage = "url('img/girasol.webp')";
+            } else {
+                backgroundElement.style.backgroundImage = "url('img/sherk.jpg')";
+            }
+            backgroundElement.classList.add('bg-hidden');
+            setTimeout(() => {
+                backgroundElement.classList.remove('bg-hidden');
+            }, 2000);
+            
+            isShrek = !isShrek;
+        }
+
+        setInterval(toggleBackground, 5000);
+    </script>    
+
+    <div class="bg-transition" style="background-image: url('img/girasol.webp');"></div>
+
+    <audio autoplay loop>
+        <source src="aud/burro.mp3" type="audio/mpeg">
+    </audio>
+
+    <div>
+        <h2>Tengo un regalo para ti</h2>
+        <button onclick="window.location.href='rosas.html'">Abrir</button>
+    </div>
+</body>
+</html>
